@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-  @include('partials.index')
+  @include('partials.bootstrap')
 <body>
 
 <div class="wrapper">
@@ -19,7 +19,7 @@
                         <p class="category">We The Best Gym In Town.</p>
                     </div>
                     <div class="content">
-                      <img class="border-gray" src="./public/assets/img/index6.png" alt="..." style="height:100%; width:100%;"/>
+                      <img class="border-gray" src="../public/assets/img/index6.png" alt="..." style="height:100%; width:100%;"/>
 
                         <div class="footer text-center">
                             <div class="legend">
@@ -50,7 +50,14 @@
                     </div>
                     <div class="content">
                     <div class="content ">
-                  <img class="border-gray" src="./public/assets/img/index1.png" alt="..." style="height:100%; width:100%;"/>
+                    @foreach($tips as $key)                    
+                    <ul>
+
+                        <li>{{$key->tip }}</li>
+                    </ul>
+                    <hr>
+                    @endforeach
+                  
                     </div>
 
 
@@ -74,7 +81,7 @@
                     </div>
                     <div class="content">
                     <div class="content ">
-                        <img class=" border-gray" src="./public/assets/img/index4.jpg" alt="..." style="height:100%; width:100%;"/>
+                        <img class=" border-gray" src="../public/assets/img/index4.jpg" alt="..." style="height:100%; width:100%;"/>
 
                     </div>
 
@@ -86,32 +93,6 @@
                             <div class="stats">
                                 <i class="fa fa-check"></i> All Payments On The Desk
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card ">
-                    <div class="header">
-                        <h4 class="title">Announcements</h4>
-                        <p class="category"></p>
-                    </div>
-                    <div class="content">
-                        <div class="table-full-width">
-                            <table class="table">
-                                <tbody>
-                                    <tr>
-                                        <td>Sign contract for "What are conference organizers afraid of?"</td>
-                                        <td class="td-actions text-right">
-                                        <div class="stats">
-                                            <i class="fa fa-history"></i> Posted On
-                                        </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div class="footer">
-
                         </div>
                     </div>
                 </div>
@@ -129,5 +110,5 @@
 
 
 </body>
-    @include('partials.indexjs')
+    @include('partials.js')
 </html>

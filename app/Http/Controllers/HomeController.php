@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Session;
 use App\Hit;
+use App\Tip;
 use App\Book;
 use App\Anouncement;
 use Validator;
@@ -35,7 +36,8 @@ class HomeController extends Controller
     {
         $name = Session::get();
         $hit = Hit::get();
-        return view('welcome')->with('sessions', $name)->with('hits', $hit);
+        $tip = Tip::get();
+        return view('welcome')->with('sessions', $name)->with('tips', $tip);
     }
 
     protected function users() {
@@ -214,6 +216,54 @@ class HomeController extends Controller
         return redirect('/bookings');
 
       }
+
+   protected function tips() {
+     $name = Hit::get();
+     $tip = Tip::get();
+     return view('tips')->with('hits', $name)->with('tips', $tip);
+   }
+
+    protected function addTip(Request $request)
+    {
+
+     $rules = array(
+             'name' => 'required|max:100',
+             'tip' => 'required|max:100'
+         );
+
+         $validator = Validator::make(Input::all(), $rules);
+
+   // check if the validator failed -----------------------
+   if ($validator->fails()) {
+
+       // get the error messages from the validator
+       $messages = $validator->messages();
+
+       // redirect our user back to the form with the errors from the validator
+       return Redirect::to('/tips')
+           ->withErrors($validator);
+
+   } else {
+       // validation successful ---------------------------
+
+       // report has passed all tests!
+       // let him enter the database
+
+       // create the data for report
+       $tip = new Tip;
+       $tip->tip     = Input::get('tip');
+       $tip->name    = Input::get('name');
+
+       // save report
+       $tip->save();
+
+       // redirect ----------------------------------------
+       // redirect our user back to the form so they can do it all over again
+       return Redirect::to('/tips');
+
+    }
+  }
+
 
    protected function hits() {
      $name = Hit::get();

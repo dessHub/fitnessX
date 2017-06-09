@@ -9,7 +9,7 @@
 
   <div class="sidebar-wrapper">
         <div class="logo">
-            <a href="{{ url('/') }}" class="simple-text">
+            <a href="{{ url('/home') }}" class="simple-text">
                 <i>Fitness</i><em><b>X</b></em>
             </a>
         </div>
@@ -17,7 +17,7 @@
         <ul class="nav">
 
               <li class="active">
-                  <a href="{{ url('/') }}">
+                  <a href="{{ url('/home') }}">
                       <i class="pe-7s-graph"></i>
                       <p>Dashboard</p>
                   </a>
@@ -59,6 +59,12 @@
                 <a href="{{ url('/hit')}}">
                     <i class="pe-7s-news-paper"></i>
                     <p>Add Programmes</p>
+                </a>
+            </li>
+            <li>
+                <a href="{{ url('/tips')}}">
+                    <i class="pe-7s-news-paper"></i>
+                    <p>Add Health Tips</p>
                 </a>
             </li>
             <li>

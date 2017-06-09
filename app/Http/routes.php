@@ -22,9 +22,7 @@ use Illuminate\Support\Facades\Redirect;
 */
 
 $this->get('/', function () {
-$name = Session::get();
-$hit = Hit::get();
-return view('welcome')->with('sessions', $name)->with('hits', $hit);
+return view('home');
 });
 
 $this->get('/programs', function () {
@@ -41,7 +39,7 @@ $this->get('/anouncements', function () {
 
 $this->auth();
 
-//Route::get('/', 'HomeController@index');
+$this::get('/home', 'HomeController@index');
 
 // App Routes
 $this->get('users', 'HomeController@users');
@@ -59,5 +57,7 @@ $this->post('confirmpayment', 'HomeController@confirmpayment');
 $this->get('myschedule', 'HomeController@myschedule');
 $this->get('mysessions', 'HomeController@mysessions');
 
-
 $this->post('anounce', 'HomeController@anounce');
+
+$this->get('tips', 'HomeController@tips');
+$this->post('tips', 'HomeController@addTip');

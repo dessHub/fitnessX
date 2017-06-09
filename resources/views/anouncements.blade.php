@@ -66,16 +66,18 @@
                         <div class="table-full-width">
                             <table class="table">
                                 <tbody>
-                                    <tr>
+                                    
                                       @foreach($anounces as $key)
+                                      <tr>
                                         <td>{{ $key->note}}</td>
                                         <td class="td-actions text-right">
                                         <div class="stats">
                                             <i class="fa fa-history"></i> Posted On {{ $key->created_at}}
                                         </div>
                                         </td>
+                                        </tr>
                                         @endforeach
-                                    </tr>
+                                    
                                 </tbody>
                             </table>
                         </div>
